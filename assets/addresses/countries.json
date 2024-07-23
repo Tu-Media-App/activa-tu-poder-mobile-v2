@@ -1,0 +1,475 @@
+[
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "provinces": [
+      {
+        "name": "Azuay",
+        "code": "01",
+        "cities": [
+          {
+            "name": "Cuenca",
+            "code": "cuenca"
+          },
+          {
+            "name": "Gualaceo",
+            "code": "gualaceo"
+          },
+          {
+            "name": "Chordeleg",
+            "code": "chordeleg"
+          }
+        ]
+      },
+      {
+        "name": "Bolívar",
+        "code": "02",
+        "cities": [
+          {
+            "name": "Guaranda",
+            "code": "guaranda"
+          },
+          {
+            "name": "San Miguel",
+            "code": "san_miguel"
+          },
+          {
+            "name": "Chillanes",
+            "code": "chillanes"
+          }
+        ]
+      },
+      {
+        "name": "Cañar",
+        "code": "03",
+        "cities": [
+          {
+            "name": "Azogues",
+            "code": "azogues"
+          },
+          {
+            "name": "Biblián",
+            "code": "biblian"
+          },
+          {
+            "name": "La Troncal",
+            "code": "la_troncal"
+          }
+        ]
+      },
+      {
+        "name": "Carchi",
+        "code": "04",
+        "cities": [
+          {
+            "name": "Tulcán",
+            "code": "tulcan"
+          },
+          {
+            "name": "Espejo",
+            "code": "espejo"
+          },
+          {
+            "name": "Mira",
+            "code": "mira"
+          }
+        ]
+      },
+      {
+        "name": "Chimborazo",
+        "code": "05",
+        "cities": [
+          {
+            "name": "Riobamba",
+            "code": "riobamba"
+          },
+          {
+            "name": "Guano",
+            "code": "guano"
+          },
+          {
+            "name": "Alausí",
+            "code": "alausi"
+          }
+        ]
+      },
+      {
+        "name": "Cotopaxi",
+        "code": "06",
+        "cities": [
+          {
+            "name": "Latacunga",
+            "code": "latacunga"
+          },
+          {
+            "name": "Salcedo",
+            "code": "salcedo"
+          },
+          {
+            "name": "La Mana",
+            "code": "la_mana"
+          }
+        ]
+      },
+      {
+        "name": "El Oro",
+        "code": "07",
+        "cities": [
+          {
+            "name": "Machala",
+            "code": "machala"
+          },
+          {
+            "name": "Pasaje",
+            "code": "pasaje"
+          },
+          {
+            "name": "Santa Rosa",
+            "code": "santa_rosa"
+          }
+        ]
+      },
+      {
+        "name": "Esmeraldas",
+        "code": "08",
+        "cities": [
+          {
+            "name": "Esmeraldas",
+            "code": "esmeraldas"
+          },
+          {
+            "name": "San Lorenzo",
+            "code": "san_lorenzo"
+          },
+          {
+            "name": "Atacames",
+            "code": "atacames"
+          }
+        ]
+      },
+      {
+        "name": "Galápagos",
+        "code": "09",
+        "cities": [
+          {
+            "name": "Puerto Baquerizo Moreno",
+            "code": "puerto_baquerizo_moreno"
+          },
+          {
+            "name": "Puerto Ayora",
+            "code": "puerto_ayora"
+          },
+          {
+            "name": "Isabela",
+            "code": "isabela"
+          }
+        ]
+      },
+      {
+        "name": "Guayas",
+        "code": "10",
+        "cities": [
+          {
+            "name": "Guayaquil",
+            "code": "guayaquil"
+          },
+          {
+            "name": "Durán",
+            "code": "duran"
+          },
+          {
+            "name": "Samborondón",
+            "code": "samborondon"
+          }
+        ]
+      },
+      {
+        "name": "Imbabura",
+        "code": "11",
+        "cities": [
+          {
+            "name": "Ibarra",
+            "code": "ibarra"
+          },
+          {
+            "name": "Otavalo",
+            "code": "otavalo"
+          },
+          {
+            "name": "Cotacachi",
+            "code": "cotacachi"
+          }
+        ]
+      },
+      {
+        "name": "Loja",
+        "code": "12",
+        "cities": [
+          {
+            "name": "Loja",
+            "code": "loja"
+          },
+          {
+            "name": "Cariamanga",
+            "code": "cariamanga"
+          },
+          {
+            "name": "Zapotillo",
+            "code": "zapotillo"
+          }
+        ]
+      },
+      {
+        "name": "Los Ríos",
+        "code": "13",
+        "cities": [
+          {
+            "name": "Babahoyo",
+            "code": "babahoyo"
+          },
+          {
+            "name": "Quevedo",
+            "code": "quevedo"
+          },
+          {
+            "name": "Ventanas",
+            "code": "ventanas"
+          }
+        ]
+      },
+      {
+        "name": "Manabí",
+        "code": "14",
+        "cities": [
+          {
+            "name": "Portoviejo",
+            "code": "portoviejo"
+          },
+          {
+            "name": "Manta",
+            "code": "manta"
+          },
+          {
+            "name": "Jipijapa",
+            "code": "jipijapa"
+          }
+        ]
+      },
+      {
+        "name": "Morona Santiago",
+        "code": "15",
+        "cities": [
+          {
+            "name": "Macas",
+            "code": "macas"
+          },
+          {
+            "name": "Gualaquiza",
+            "code": "gualaquiza"
+          },
+          {
+            "name": "Morona",
+            "code": "morona"
+          }
+        ]
+      },
+      {
+        "name": "Napo",
+        "code": "16",
+        "cities": [
+          {
+            "name": "Tena",
+            "code": "tena"
+          },
+          {
+            "name": "El Chaco",
+            "code": "el_chaco"
+          },
+          {
+            "name": "Archidona",
+            "code": "archidona"
+          }
+        ]
+      },
+      {
+        "name": "Orellana",
+        "code": "17",
+        "cities": [
+          {
+            "name": "Coca",
+            "code": "coca"
+          },
+          {
+            "name": "La Joya de los Sachas",
+            "code": "la_joya_de_los_sachas"
+          },
+          {
+            "name": "Francisco de Orellana",
+            "code": "francisco_de_orellana"
+          }
+        ]
+      },
+      {
+        "name": "Pastaza",
+        "code": "18",
+        "cities": [
+          {
+            "name": "Puyo",
+            "code": "puyo"
+          },
+          {
+            "name": "Mera",
+            "code": "mera"
+          },
+          {
+            "name": "Santa Clara",
+            "code": "santa_clara"
+          }
+        ]
+      },
+      {
+        "name": "Pichincha",
+        "code": "19",
+        "cities": [
+          {
+            "name": "Quito",
+            "code": "quito"
+          },
+          {
+            "name": "Sangolquí",
+            "code": "sangolqui"
+          },
+          {
+            "name": "Machachi",
+            "code": "machachi"
+          }
+        ]
+      },
+      {
+        "name": "Santa Elena",
+        "code": "20",
+        "cities": [
+          {
+            "name": "Santa Elena",
+            "code": "santa_elena"
+          },
+          {
+            "name": "Salinas",
+            "code": "salinas"
+          },
+          {
+            "name": "La Libertad",
+            "code": "la_libertad"
+          }
+        ]
+      },
+      {
+        "name": "Santo Domingo de los Tsáchilas",
+        "code": "21",
+        "cities": [
+          {
+            "name": "Santo Domingo",
+            "code": "santo_domingo"
+          },
+          {
+            "name": "La Concordia",
+            "code": "la_concordia"
+          },
+          {
+            "name": "Los Bancos",
+            "code": "los_bancos"
+          }
+        ]
+      },
+      {
+        "name": "Sucumbíos",
+        "code": "22",
+        "cities": [
+          {
+            "name": "Nueva Loja",
+            "code": "nueva_loja"
+          },
+          {
+            "name": "Shushufindi",
+            "code": "shushufindi"
+          },
+          {
+            "name": "Lago Agrio",
+            "code": "lago_agrio"
+          }
+        ]
+      },
+      {
+        "name": "Tungurahua",
+        "code": "23",
+        "cities": [
+          {
+            "name": "Ambato",
+            "code": "ambato"
+          },
+          {
+            "name": "Baños de Agua Santa",
+            "code": "banos_de_agua_santa"
+          },
+          {
+            "name": "Pelileo",
+            "code": "pelileo"
+          }
+        ]
+      },
+      {
+        "name": "Zamora Chinchipe",
+        "code": "24",
+        "cities": [
+          {
+            "name": "Zamora",
+            "code": "zamora"
+          },
+          {
+            "name": "Yantzaza",
+            "code": "yantzaza"
+          },
+          {
+            "name": "Zumba",
+            "code": "zumba"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Latinoamérica",
+    "code": "LA",
+    "provinces": null
+  },
+  {
+    "name": "Estados Unidos",
+    "code": "US",
+    "provinces": null
+  },
+  {
+    "name": "Europa",
+    "code": "EU",
+    "provinces": null
+  },
+  {
+    "name": "Asia",
+    "code": "AS",
+    "provinces": null
+  },
+  {
+    "name": "Oceanía",
+    "code": "OC",
+    "provinces": null
+  },
+  {
+    "name": "El Caribe",
+    "code": "EC",
+    "provinces": null
+  },
+  {
+    "name": "África",
+    "code": "AF",
+    "provinces": null
+  }
+]
