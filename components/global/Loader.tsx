@@ -1,11 +1,10 @@
 import React from 'react';
 import { Dialog } from '@rneui/themed';
 import { StyleSheet, Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
+import { useLoadingStore } from '@/store';
 
 export const LoaderProvider = ({ children }: { children: React.ReactElement }) => {
-  const loading = useSelector((state: RootState) => state.loader.loading)
+  const loading = useLoadingStore(state => state.loading);
 
   return (
     <>
