@@ -1,25 +1,26 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Overlay, Image } from '@rneui/themed';
-import {Colors} from '@/constants/Colors';
+import { Colors } from '@/constants/Colors';
 import { Assets } from '@/constants/Styles';
+import { useErrorStore } from '@/store';
 
-export default function OverlayError({ isVisible, setVisible, errorMsg }) {
+export const OverlayError = () => {
+  const [errorMessage, clearError] = useErrorStore(state => [state.error, state.clearError]);
+
   return (
-    <Overlay isVisible={isVisible} onBackdropPress={() => setVisible(false)} borderRadius={25} height={350}>
-      <View style={styles.content}>
-        <Image source={Assets.error} style={styles.image} containerStyle={styles.image} />
-        <Text style={styles.textStyle}>{errorMsg}</Text>
-      </View>
-    </Overlay>
+    <>
+      <Overlay isVisible={!!errorMessage} onBackdropPress={clearError}>
+        <View style={styles.content}>
+          <Image source={Assets.error} style={styles.image} containerStyle={styles.image} />
+          <Text style={styles.textStyle}>{errorMessage}</Text>
+        </View>
+      </Overlay>
+    </>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 0,
-    paddingVertical: 0,
-  },
   content: {
     flexDirection: 'column',
     justifyContent: 'space-between',

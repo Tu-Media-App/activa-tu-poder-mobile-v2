@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native';
 
-import {Colors} from '@/constants/Colors';
+import { Colors } from '@/constants/Colors';
 import { CustomFonts } from '@/constants/Styles';
 import { Icon } from '@rneui/base';
 
