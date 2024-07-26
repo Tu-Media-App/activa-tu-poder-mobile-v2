@@ -1,11 +1,11 @@
-export default {
+{
   "expo": {
     "name": "activa-tu-poder-mobile-v2",
     "slug": "activa-tu-poder-mobile-v2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "activa-tu-poder-mobile-v2s",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -13,12 +13,12 @@ export default {
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "googleServicesFile": process.env.GOOGLE_SERVICES_INFOPLIST,
+      "googleServicesFile": "./GoogleService-Info.plist",
       "bundleIdentifier": "com.activatupoder",
-      "supportsTablet": true,
+      "supportsTablet": true
     },
     "android": {
-      "googleServicesFile": process.env.GOOGLE_SERVICES_JSON,
+      "googleServicesFile": "./google-services.json",
       "package": "com.activatupoder",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
