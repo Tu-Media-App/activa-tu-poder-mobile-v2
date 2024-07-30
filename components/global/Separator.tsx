@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import { Divider } from '@rneui/base';
 
-export default function Separator() {
+export const Separator = () => {
   return (
     <View style={styles.container}>
       <View style={styles.section}>
@@ -17,7 +17,7 @@ export default function Separator() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: { width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center', marginVertical: 30, alignItems: 'center' },

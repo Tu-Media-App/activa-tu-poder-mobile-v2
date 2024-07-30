@@ -12,6 +12,7 @@ export const useLogin = () => {
     if (!email || !password) return;
     try {
       const credential = await auth().signInWithEmailAndPassword(email, password);
+      console.log('credential', credential);
       return { credential, error: null };
     } catch (e: any) {
       const { error } = handleError(e as FirebaseAuthTypes.NativeFirebaseAuthError);

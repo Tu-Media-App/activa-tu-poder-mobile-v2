@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 import { Card } from '@rneui/themed';
 
-import { Colors } from '@/constants/Colors';
-
-import { OverlayError } from '@/components/global/OverlayError';
-import Separator from '@/components/global/Separator';
-
-import { CustomFonts } from '@/constants/Styles';
+import { CustomFonts, Colors } from '@/constants';
 import { router } from 'expo-router';
-import { AppleLoginButton, EmailLoginForm, GoogleLoginButton } from '@/components';
+import { AppleLoginButton, EmailLoginForm, GoogleLoginButton, OverlayError, Separator } from '@/components';
+import { useAuthStore } from '@/store';
 
 export default function LoginScreen() {
+  const [firebaseUser, user] = useAuthStore(state => [state.firebaseUser, state.user]);
+
+  useEffect(() => {
+    if (user && firebaseUser) {
+      router.push('/profile');
+    }
+  }, [user, firebaseUser]);
+
   return (
     <GestureHandlerRootView>
       <ScrollView>
