@@ -10,19 +10,17 @@ import { Colors, Assets, CustomFonts } from '@/constants';
 import TextInput from '@/components/global/TextInput';
 
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { PersonalInfo } from '@/entities/users/personalInfo';
+import { PersonalInfo, Country, Province, City } from '@/types';
 import Select from '@/components/global/Select';
-import { Country } from '@/entities/users/country';
-import { Province } from '@/entities/users/province';
-import { City } from '@/entities/users/city';
-import { useDeleteUser, useLogout, useStorePhoto } from '@/hooks';
+import { useStorePhoto, useUpdateProfile } from '@/hooks';
 import DateInput from '@/components/global/DateInput';
 import ProfileAvatar from '@/components/users/ProfileAvatar';
 import { Timestamp } from '@react-native-firebase/firestore';
 import { useAuthStore, useLoadingStore, useSheetStore } from '@/store';
 import { OverlayError } from '@/components/global/OverlayError';
 import { router } from 'expo-router';
-import { Sheet } from '@/components';
+import { LogoutButton, Sheet } from '@/components';
+import { DeleteAccountButton } from '@/components/users';
 
 type AlertParams = [string, string, AlertButton[], AlertOptions];
 
@@ -42,11 +40,8 @@ const alerts: { success: AlertParams } = {
 
 export default function ProfileScreen() {
   const [currentUser, user] = useAuthStore(state => [state.firebaseUser, state.user]);
-
-  const mode = 'edit';
-  const { logout } = useLogout();
-  const { deleteUser } = useDeleteUser();
   const { storePhoto } = useStorePhoto();
+  const { updateProfile } = useUpdateProfile();
   const [showLoader, hideLoader] = useLoadingStore(state => [state.showLoader, state.hideLoader]);
   const [sheetSelection, showSheet] = useSheetStore(state => [state.selected, state.show]);
 
@@ -74,9 +69,6 @@ export default function ProfileScreen() {
     },
   });
 
-  //sync dirty profile
-  // const dispatch = useDispatch();
-
   // const syncDirty = useCallback(() => {
   //   // dispatch(GlobalActions.setDirtyProfile(form.formState.isDirty));
   // }, [dispatch, form.formState.isDirty]);
@@ -93,11 +85,10 @@ export default function ProfileScreen() {
 
   const submit: SubmitHandler<PersonalInfo> = async (fields: PersonalInfo) => {
     showLoader();
-    // await updateProfile(user.uid, fields);
+    if (user) await updateProfile(user.uid, fields);
     hideLoader();
 
     Alert.alert(...alerts.success);
-    // navigation.navigate('Home');
   };
 
   useEffect(() => {
@@ -174,33 +165,11 @@ export default function ProfileScreen() {
   };
 
   const handleImage = async () => {
-    try {
-      const options = [
-        { value: 'camera', label: 'Tomar una foto', icon: <Icon type="entypo" name="camera" /> },
-        { value: 'gallery', label: 'Ir a galería', icon: <Icon type="entypo" name="image" /> },
-      ];
-      showSheet({ options });
-    } catch (error) {
-      console.error(error);
-      hideLoader();
-    }
-  };
-
-  const onDelete = () => {
-    Alert.alert('Confirmar eliminación', 'Si eliminas tu perfil no podrás acceder a menos que te registres de nuevo', [
-      {
-        text: 'Cancelar',
-        onPress: () => {},
-        style: 'cancel',
-      },
-      {
-        text: 'Confirmar',
-        onPress: async () => {
-          if (currentUser) await deleteUser(currentUser);
-          logout();
-        },
-      },
-    ]);
+    const options = [
+      { value: 'camera', label: 'Tomar una foto', icon: <Icon type="entypo" name="camera" /> },
+      { value: 'gallery', label: 'Ir a galería', icon: <Icon type="entypo" name="image" /> },
+    ];
+    showSheet({ options });
   };
 
   return (
@@ -317,21 +286,15 @@ export default function ProfileScreen() {
             )}
 
             <View style={styles.actions}>
-              {mode === 'edit' && (
-                <>
-                  {form.formState.isDirty && (
-                    <TouchableOpacity onPress={form.handleSubmit(submit, error => console.warn(error))} style={[styles.button, { marginBottom: 40 }]}>
-                      <Text style={styles.buttonText}>Guardar cambios</Text>
-                    </TouchableOpacity>
-                  )}
-                  <TouchableOpacity onPress={logout} style={[styles.button, styles.negative]}>
-                    <Text style={styles.buttonText}>Cerrar Sesión</Text>
+              <>
+                {form.formState.isDirty && (
+                  <TouchableOpacity onPress={form.handleSubmit(submit, error => console.warn(error))} style={[styles.button, { marginBottom: 40 }]}>
+                    <Text style={styles.buttonText}>Guardar cambios</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={onDelete} style={[styles.button, { backgroundColor: 'red' }]}>
-                    <Text style={styles.buttonText}>Eliminar mi cuenta</Text>
-                  </TouchableOpacity>
-                </>
-              )}
+                )}
+                <LogoutButton />
+                <DeleteAccountButton />
+              </>
             </View>
           </View>
           <OverlayError />
