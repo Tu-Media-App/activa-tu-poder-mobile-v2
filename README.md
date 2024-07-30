@@ -1,7 +1,3 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
 ## Get started
 
 1. Install dependencies
@@ -16,4 +12,10 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ```
 npx expo run:android
+```
+
+## Make EAS BUILD
+
+```
+ eas build -p <ios|android> --profile development
 ```
