@@ -1,4 +1,4 @@
-import { ProfileSheetFields } from '@/entities/users/profileSheetFields';
+import { ProfileSheetFields } from '@/types';
 import firestore from '@react-native-firebase/firestore';
 
 export const useCompleteProfile = () => {

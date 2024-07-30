@@ -1,7 +1,7 @@
-import User from '@/entities/users/user';
 import firestore from '@react-native-firebase/firestore';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { create } from 'zustand';
+import { User } from '@/types';
 
 interface AuthStore {
   firebaseUser: FirebaseAuthTypes.User | null;

@@ -1,4 +1,4 @@
-import { UserFactory } from '@/utils/userFactory';
+import { UserFactory } from '@/utils';
 import firestore from '@react-native-firebase/firestore';
 
 export const useCreateUser = () => {
