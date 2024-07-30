@@ -10,11 +10,10 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Download google services files from firebase console
+2. Download google services files from firebase console and paste them on project root
 
-3. Setup google services files with eas (login expo account with eas)
-```
-eas secret:create --scope project --name GOOGLE_SERVICES_JSON --type file --value ./path/to/google-services.json
-eas secret:create --scope project --name GOOGLE_SERVICES_INFOPLIST --type file --value ./path/to/google-services-info.plist
-```
+3. Run App
 
+```
+npx expo run:android
+```

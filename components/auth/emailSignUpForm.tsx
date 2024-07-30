@@ -11,6 +11,9 @@ import { useEmailRegister } from '@/hooks/auth/useEmailRegister';
 import { isAuthError } from '@/utils/isAuthError';
 import { useErrorStore, useLoadingStore, useTermsAndConditionsStore } from '@/store';
 import { TermsAndConditions } from './termsAndConditions';
+import { Alert } from 'react-native';
+import { authAlerts } from '@/constants';
+import { router } from 'expo-router';
 
 export const EmailSignUpForm = () => {
   const areTermsAccepted = useTermsAndConditionsStore(state => state.isAccepted);
@@ -30,7 +33,8 @@ export const EmailSignUpForm = () => {
       const message = AuthMessage[code];
       setError(message);
     } else {
-      // Alert.alert(...alerts.success);
+      Alert.alert(...authAlerts.emailSignUpSuccess);
+      router.replace('/');
     }
   };
 

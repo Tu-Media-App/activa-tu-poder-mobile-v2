@@ -2,20 +2,25 @@ import { useErrorStore } from '@/store';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import auth from '@react-native-firebase/auth';
 import { useState } from 'react';
+import { useCreateUser } from '../firebase';
 
 export const useLogin = () => {
   const setError = useErrorStore(state => state.setError);
   const [email, setEmail] = useState<null | string>(null);
   const [password, setPassword] = useState<null | string>(null);
+  const { createUser } = useCreateUser();
 
   const login = async () => {
     if (!email || !password) return;
     try {
       const credential = await auth().signInWithEmailAndPassword(email, password);
-      console.log('credential', credential);
-      return { credential, error: null };
+      if (credential && credential.user.emailVerified) {
+        await createUser(email, credential.user.uid);
+        return { credential, error: null };
+      }
+      setError('Correo no verificado');
     } catch (e: any) {
-      const { error } = handleError(e as FirebaseAuthTypes.NativeFirebaseAuthError);
+      const error = handleError(e as FirebaseAuthTypes.NativeFirebaseAuthError);
       setError(error);
     }
   };
@@ -42,7 +47,7 @@ export const useLogin = () => {
         message = 'Servicio no disponible';
     }
 
-    return { credential: null, error: message };
+    return message;
   };
 
   return { login, setEmail, setPassword };

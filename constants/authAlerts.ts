@@ -1,10 +1,28 @@
 import { AlertButton, AlertOptions } from 'react-native';
 type AlertParams = [string, string, AlertButton[], AlertOptions];
 
-export const authAlerts: { success: AlertParams; googleFail: AlertParams; appleFail: AlertParams } = {
+type AuthAlerts = {
+  success: AlertParams;
+  emailSignUpSuccess: AlertParams;
+  googleFail: AlertParams;
+  appleFail: AlertParams;
+};
+
+export const authAlerts: AuthAlerts = {
   success: [
     '¡Bienvenido!',
     'Te has registrado correctamente. Ahora puedes usar el chat, dejar comentarios y mucho más.',
+    [
+      {
+        text: 'De acuerdo',
+        onPress: () => {},
+      },
+    ],
+    { cancelable: true },
+  ],
+  emailSignUpSuccess: [
+    'Confirmar correo',
+    'Se ha enviado un correo de confirmación a tu dirección de correo electrónico',
     [
       {
         text: 'De acuerdo',
