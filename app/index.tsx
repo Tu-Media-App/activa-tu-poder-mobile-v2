@@ -27,7 +27,10 @@ export default function LoginScreen() {
             <AppleLoginButton />
             <GoogleLoginButton text="Entrar con Google" disabled={false} />
             <View style={styles.footer}>
-              <TouchableOpacity onPress={() => router.push('/register')}>
+              <TouchableOpacity onPress={() => router.push('/auth/forgotPassword')}>
+                <Text style={styles.boldLink}>¿Olvidaste tu contraseña?</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => router.push('/auth/register')}>
                 <Text style={styles.footerText}>¿Aún no tienes cuenta?</Text>
                 <Text style={styles.boldLink}>Regístrate Aquí...</Text>
               </TouchableOpacity>

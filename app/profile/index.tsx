@@ -52,7 +52,6 @@ export default function ProfileScreen() {
   }, [user, currentUser]);
 
   const form = useForm<PersonalInfo>({
-    mode: 'onSubmit',
     values: {
       about: user?.about,
       name: user?.name,
