@@ -5,21 +5,20 @@ import Button from '@/components/global/Button';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import TextInput from '@/components/global/TextInput';
-import { RegisterFields } from '@/auth/registerFields';
-import { AuthMessage } from '@/auth/authMessage';
+import { RegisterFields } from '@/types';
 import { useEmailRegister } from '@/hooks/auth/useEmailRegister';
 import { isAuthError } from '@/utils/isAuthError';
-import { useErrorStore, useLoadingStore, useTermsAndConditionsStore } from '@/store';
+import { useLoadingStore, useTermsAndConditionsStore } from '@/store';
 import { TermsAndConditions } from './termsAndConditions';
-import { Alert } from 'react-native';
 import { authAlerts } from '@/constants';
 import { router } from 'expo-router';
+import { useAuthErrorHandler } from '@/hooks';
 
 export const EmailSignUpForm = () => {
   const areTermsAccepted = useTermsAndConditionsStore(state => state.isAccepted);
   const [showLoader, hideLoader] = useLoadingStore(state => [state.showLoader, state.hideLoader]);
   const { emailRegister } = useEmailRegister();
-  const setError = useErrorStore(state => state.setError);
+  const { handleAuthError } = useAuthErrorHandler();
   const form = useForm<RegisterFields>({ mode: 'all' });
   const { password, passwordConfirm } = form.watch();
 
@@ -27,15 +26,8 @@ export const EmailSignUpForm = () => {
     showLoader();
     const { error } = await emailRegister(fields.email, fields.password);
     hideLoader();
-
-    if (isAuthError(error)) {
-      const { code } = error;
-      const message = AuthMessage[code];
-      setError(message);
-    } else {
-      Alert.alert(...authAlerts.emailSignUpSuccess);
-      router.replace('/');
-    }
+    handleAuthError(error, authAlerts.emailSignUpSuccess);
+    if (!isAuthError(error)) router.replace('/');
   };
 
   useEffect(() => {

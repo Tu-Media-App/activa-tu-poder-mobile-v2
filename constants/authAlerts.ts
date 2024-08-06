@@ -1,9 +1,10 @@
 import { AlertButton, AlertOptions } from 'react-native';
-type AlertParams = [string, string, AlertButton[], AlertOptions];
+export type AlertParams = [string, string, AlertButton[], AlertOptions];
 
 type AuthAlerts = {
   success: AlertParams;
   emailSignUpSuccess: AlertParams;
+  recoverPasswordSuccess: AlertParams;
   googleFail: AlertParams;
   appleFail: AlertParams;
 };
@@ -23,6 +24,17 @@ export const authAlerts: AuthAlerts = {
   emailSignUpSuccess: [
     'Confirmar correo',
     'Se ha enviado un correo de confirmación a tu dirección de correo electrónico',
+    [
+      {
+        text: 'De acuerdo',
+        onPress: () => {},
+      },
+    ],
+    { cancelable: true },
+  ],
+  recoverPasswordSuccess: [
+    'Correo enviado',
+    'Se ha enviado un correo con instrucciones para recuperar tu contraseña',
     [
       {
         text: 'De acuerdo',

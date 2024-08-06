@@ -1,12 +1,13 @@
 import React from 'react';
 import { Input, Card } from '@rneui/themed';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 import { Colors } from '@/constants/Colors';
 import Button from '@/components/global/Button';
 import { useLogin } from '@/hooks';
 import { CustomFonts } from '@/constants/Styles';
 import { useLoadingStore } from '@/store';
+import { router } from 'expo-router';
 
 export const EmailLoginForm = () => {
   const { login, setEmail, setPassword } = useLogin();
@@ -48,6 +49,9 @@ export const EmailLoginForm = () => {
         placeholder={'* * * * *'}
       />
       <Button onPress={loginCall}>Entrar</Button>
+      <TouchableOpacity onPress={() => router.push('/auth/forgotPassword')}>
+        <Text style={styles.boldLink}>¿Olvidaste tu contraseña?</Text>
+      </TouchableOpacity>
     </>
   );
 };
@@ -80,5 +84,11 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontSize: 18,
     marginTop: 15,
+  },
+  boldLink: {
+    marginTop: 10,
+    color: Colors.primary,
+    textAlign: 'center',
+    fontFamily: CustomFonts.MontserratBold,
   },
 });

@@ -1,11 +1,29 @@
-import { Colors, CustomFonts } from '@/constants';
-import { Card, Icon, Input } from '@rneui/themed';
+import { authAlerts, Colors, CustomFonts } from '@/constants';
+import { Card, Icon } from '@rneui/themed';
 import React from 'react';
 import { router } from 'expo-router';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Button from '@/components/global/Button';
+import { useForm } from 'react-hook-form';
+import TextInput from '@/components/global/TextInput';
+import { RecoverPassword } from '@/types';
+import { useAuthErrorHandler, useRecoverPassword } from '@/hooks';
+import { useLoadingStore } from '@/store';
+import { OverlayError } from '@/components';
 
 export default function ForgotPasswordScreen() {
+  const form = useForm<RecoverPassword>({ mode: 'all' });
+  const { sendRecoverMail } = useRecoverPassword();
+  const { handleAuthError } = useAuthErrorHandler();
+  const [showLoader, hideLoader] = useLoadingStore(state => [state.showLoader, state.hideLoader]);
+
+  const submit = async (fields: RecoverPassword) => {
+    showLoader();
+    const { error } = await sendRecoverMail(fields.email);
+    hideLoader();
+    handleAuthError(error, authAlerts.recoverPasswordSuccess);
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.title}>
@@ -15,19 +33,17 @@ export default function ForgotPasswordScreen() {
         </TouchableOpacity>
       </View>
       <View style={styles.card}>
-        <Input
-          onChangeText={text => {}}
-          containerStyle={styles.containerStyle}
+        <TextInput
+          name="email"
+          control={form.control}
+          rules={{ required: 'Campo requerido' }}
           label={'Correo Electrónico'}
-          labelStyle={styles.labelStyle}
-          inputContainerStyle={styles.inputContainerStyle}
-          inputStyle={{ color: Colors.primary }}
-          renderErrorMessage={false}
           autoComplete={'email'}
           autoCapitalize="none"
           placeholder="ejemplo123@email.com"
         />
-        <Button onPress={() => {}}>Enviar Correo</Button>
+        <Button onPress={form.handleSubmit(submit, (error: any) => console.warn(error))}>Enviar Correo</Button>
+        <OverlayError />
       </View>
     </View>
   );
@@ -50,6 +66,8 @@ const styles = StyleSheet.create({
   },
   titleButton: { paddingVertical: 10, paddingHorizontal: 30, position: 'absolute' },
   card: {
+    width: '100%',
+    alignItems: 'center',
     flex: 1,
     backgroundColor: Colors.whiteBackGround,
     borderTopEndRadius: 30,

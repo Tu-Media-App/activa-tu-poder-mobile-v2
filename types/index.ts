@@ -6,3 +6,5 @@ export * from './personalInfo';
 export * from './profileSheetFields';
 export * from './province';
 export * from './userRole';
+export * from './registerFields';
+export * from './recoverPassword';
